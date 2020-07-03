@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.9.19" client="site" method="upgrade">
+	<name>mod_orpopup</name>
+	<author>open ROOM</author>
+	<creationDate>Mayo 2020</creationDate>
+	<authorEmail>jaume.calafat@open-room.com</authorEmail>
+	<authorUrl>https://www.open-room.com</authorUrl>
+	<copyright>Copyright© 2019-2020</copyright>
+	<license>GNU/GPL</license>
+	<version>1.3.0</version>
+	<description>Mensaje emergente (PopUp) con imagen contenido y botón personalizable. (v1.3.0)</description>
+
+	<customContent />
+
+	<files>
+		<filename module="mod_orpopup">mod_orpopup.php</filename>
+		<folder>tmpl</folder>
+	</files>
+	<languages>
+		<language tag="es-ES">es-ES.mod_orpopup.ini</language>
+		<language tag="es-ES">es-ES.mod_orpopup.sys.ini</language>
+		<language tag="en-GB">en-GB.mod_orpopup.ini</language>
+		<language tag="en-GB">en-GB.mod_orpopup.sys.ini</language>
+	</languages>
+
+	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_CUSTOM_HTML" />
+	<config>
+		<fields name="params">
+			
+			<fieldset name="options" label="COM_MODULES_BASIC_FIELDSET_LABEL">
+				<field
+					name="prepare_content"
+					type="radio"
+					label="MOD_ORPOPUP_FIELD_PREPARE_CONTENT_LABEL"
+					description="MOD_ORPOPUP_FIELD_PREPARE_CONTENT_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="integer"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+					name="popup-metodo"
+					type="radio"
+					label="MOD_ORPOPUP_FIELD_LANZARMETODO_LABEL"
+					description="MOD_ORPOPUP_FIELD_LANZARMETODO_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="integer"
+					>
+					<option value="0">MOD_ORPOPUP_FIELD_LANZARMETODO_TIME</option>
+					<option value="1">MOD_ORPOPUP_FIELD_LANZARMETODO_POSI</option>
+				</field>
+				<field
+					name="popup-metodo-valor"
+					type="text"
+					label="MOD_ORPOPUP_FIELD_LANZARMOMENT_LABEL"
+					description="MOD_ORPOPUP_FIELD_LANZARMOMENT_DESC"
+					default="0"
+				/>
+				<field
+					name="popup-desktop"
+					type="radio"
+					label="MOD_ORPOPUP_FIELD_DESKTOP_LABEL"
+					description="MOD_ORPOPUP_FIELD_DESKTOP_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+					filter="integer"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+					name="popup-mobile"
+					type="radio"
+					label="MOD_ORPOPUP_FIELD_MOBILE_LABEL"
+					description="MOD_ORPOPUP_FIELD_MOBILE_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="integer"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				
+			</fieldset>
+			
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+				/>
+				<field
+					name="moduleclass_sfx"
+					type="textarea"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+					rows="3"
+				/>
+
+				<field
+					name="cache"
+					type="list"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC"
+					default="1"
+					filter="integer"
+					>
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="number"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC"
+					default="900"
+					filter="integer"
+				/>
+
+				<field
+					name="cachemode"
+					type="hidden"
+					default="static"
+					>
+					<option value="static"></option>
+				</field>
+				
+			</fieldset>
+			
+			
+			
+			<fieldset name="imagen" label="MOD_ORPOPUP_GROUP_IMG">
+				<field
+					name="pop-image"
+					type="radio"
+					label="MOD_ORPOPUP_FIELD_ICONPREV_LABEL"
+					description="MOD_ORPOPUP_FIELD_ICONPREV_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="integer"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+					name="pop-image-file"
+					type="media"
+					label="MOD_ORPOPUP_FIELD_ICONFILE_LABEL"
+					description="MOD_ORPOPUP_FIELD_ICONFILE_DESC"
+				/>
+				<field
+					name="pop-image-alt"
+					type="text"
+					label="MOD_ORPOPUP_FIELD_ICONALT_LABEL"
+					description="MOD_ORPOPUP_FIELD_ICONALT_DESC"
+					default=""
+				/>
+				<field
+					name="pop-image-css"
+					type="text"
+					label="MOD_ORPOPUP_FIELD_ICONCLASS_LABEL"
+					description="MOD_ORPOPUP_FIELD_ICONCLASS_DESC"
+					default=""
+				/>
+			</fieldset>
+			
+			<fieldset name="boton" label="MOD_ORPOPUP_GROUP_BTN">
+				<field
+					name="pop-botton"
+					type="radio"
+					label="MOD_ORPOPUP_FIELD_ACTIVARBOTON_LABEL"
+					description="MOD_ORPOPUP_FIELD_ACTIVARBOTON_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="integer"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+					name="pop-botton-text"
+					type="text"
+					label="MOD_ORPOPUP_FIELD_TEXTOBOTON_LABEL"
+					description="MOD_ORPOPUP_FIELD_TEXTOBOTON_DESC"
+					default=""
+				/>
+				<field
+					name="pop-botton-css"
+					type="text"
+					label="MOD_ORPOPUP_FIELD_CLASEBOTON_LABEL"
+					description="MOD_ORPOPUP_FIELD_CLASEBOTON_DESC"
+					default=""
+				/>
+				<field
+					name="pop-botton-target"
+					type="radio"
+					label="MOD_ORPOPUP_FIELD_TARGETBOTON_LABEL"
+					description="MOD_ORPOPUP_FIELD_TARGETBOTON_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					>
+					<option value="_blank">MOD_ORPOPUP_OPTTARGET_NEW</option>
+					<option value="_self">MOD_ORPOPUP_OPTTARGET_CURRENT</option>
+				</field>
+				<field
+					name="pop-botton-url"
+					type="text"
+					label="MOD_ORPOPUP_FIELD_URLBOTON_LABEL"
+					description="MOD_ORPOPUP_FIELD_URLBOTON_DESC"
+					default=""
+				/>
+			</fieldset>
+			
+			<fieldset name="cookie" label="MOD_ORPOPUP_GROUP_COOKIE">
+				
+				<field
+					name="pop-cookie-name"
+					type="text"
+					label="MOD_ORPOPUP_FIELD_COOKIENAME_LABEL"
+					description="MOD_ORPOPUP_FIELD_COOKIENAME_DESC"
+					default=""
+				/>
+				<field
+					name="pop-cookie-value"
+					type="text"
+					label="MOD_ORPOPUP_FIELD_COOKIEVALUE_LABEL"
+					description="MOD_ORPOPUP_FIELD_COOKIEVALUE_DESC"
+					default=""
+				/>
+				<field
+					name="pop-cookie-time"
+					type="number"
+					label="MOD_ORPOPUP_FIELD_COOKIETIME_LABEL"
+					description="MOD_ORPOPUP_FIELD_COOKIETIME_DESC"
+					default="0"
+					filter="integer"
+				/>
+			</fieldset>
+			
+		</fields>
+	</config>
+  <updateservers>
+    <server type="module" name="PopUp OR Template">https://webprojects.open-room.com/updates/mod_orpopup/updates.xml</server>
+  </updateservers>
+</extension>
