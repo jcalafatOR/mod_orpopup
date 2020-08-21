@@ -128,11 +128,11 @@ jQuery(document).ready(function()
 			var orPop_cookieTime = orPop.attr('rel-cookietime');
 			var metodo = orPop.attr('mod-attr');
 			var metodoValor = orPop.attr('mod-attrval');
-            var cuentaAtras = parseInt(metodoValor - orPopup_checkCookieTime('orpopup_timeController', exdays));
+            var cuentaAtras = parseInt(metodoValor - orPopup_checkCookieTime('orpopup_timeController', orPop_cookieTime));
             var orpopup_timeController = setInterval(function(){
-                orPopup_setCookie('orpopup_timeController', orPopup_checkCookieTime('orpopup_timeController', exdays) + 1000, exdays);
+                orPopup_setCookie('orpopup_timeController', orPopup_checkCookieTime('orpopup_timeController', orPop_cookieTime) + 1000, orPop_cookieTime);
             }, 1000);
-			if(metodo == "time" && cuentaAtras > 0) // Time
+			if(metodo == "time" && cuentaAtras >= 0) // Time
 			{
 				setTimeout(function()
                 { 
