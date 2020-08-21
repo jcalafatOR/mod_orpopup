@@ -29,8 +29,8 @@ if (!function_exists('orTemplate_v4popup')) {
 		$rs = false; 
 		$checkVersion = explode(".",$version);
 		if($checkVersion[0] >= 1 &&
-		   $checkVersion[1] >= 17 &&
-		   ( (isset($checkVersion[2]) && $checkVersion[2] >= 2) || (!isset($checkVersion[2]) && $checkVersion[1] >= 18)  ) )
+		   $checkVersion[1] >= 20 &&
+		   ( (isset($checkVersion[2]) && $checkVersion[2] >= 2) || (!isset($checkVersion[2]) && $checkVersion[1] >= 21)  ) )
 		{ $rs = true; }
 		return $rs;
 	}

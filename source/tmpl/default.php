@@ -82,6 +82,23 @@ if(typeof orPopup_checkCookie === 'undefined' )
     }
 }    
     
+if(typeof orPopup_checkCookieTime === 'undefined' )
+{  
+    function orPopup_checkCookieTime(cname, exdays)
+    {
+        var salida = false;
+        if(orPopup_getCookie(cname) !== "")
+        { 
+            salida = parseInt(orPopup_getCookie(cname)); 
+        }else
+        {
+            orPopup_setCookie(cname, 0, exdays);
+            salida = 0;
+        }
+
+        return salida;
+    }
+}    
 
 if(typeof orPopup_lanzar === 'undefined' )
 {  
@@ -111,9 +128,20 @@ jQuery(document).ready(function()
 			var orPop_cookieTime = orPop.attr('rel-cookietime');
 			var metodo = orPop.attr('mod-attr');
 			var metodoValor = orPop.attr('mod-attrval');
-			if(metodo == "time") // Time
+            var cuentaAtras = parseInt(metodoValor - orPopup_checkCookieTime('orpopup_timeController', exdays));
+            var orpopup_timeController = setInterval(function(){
+                orPopup_setCookie('orpopup_timeController', orPopup_checkCookieTime('orpopup_timeController', exdays) + 1000, exdays);
+            }, 1000);
+			if(metodo == "time" && cuentaAtras > 0) // Time
 			{
-				setTimeout(function(){ orPopup_lanzar(orPop); orPopup_setCookie(orPop_cookieName, orPop_cookieValue, orPop_cookieTime); }, metodoValor);
+				setTimeout(function()
+                { 
+                    orPopup_lanzar(orPop); 
+                    orPopup_setCookie(orPop_cookieName, orPop_cookieValue, orPop_cookieTime);
+                    clearInterval(orpopup_timeController);
+                    orPopup_setCookie('orpopup_timeController', 0, -1000);
+                }, cuentaAtras);
+                return false;
 			}
 		}
 	});
