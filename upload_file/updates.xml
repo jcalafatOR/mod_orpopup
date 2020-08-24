@@ -5,10 +5,10 @@
 		<description>Módulo para integrar en el template de Open ROOM Un Pop Up con mensaje y botón (opcional) con control de duración de Cookies</description>
 		<element>mod_orpopup</element>
 		<type>module</type>
-		<version>1.3.1</version>
+		<version>1.3.2</version>
 		<client>0</client>
 		<downloads>
-			<downloadurl type="update" format="zip">https://webprojects.open-room.com/updates/mod_orpopup/mod_orpopup_1-3-1.zip</downloadurl>
+			<downloadurl type="update" format="zip">https://webprojects.open-room.com/updates/mod_orpopup/mod_orpopup_1-3-2.zip</downloadurl>
 		</downloads>
 		<maintainer>Open ROOM</maintainer>
 		<maintainerurl>https://www.open-room.com/</maintainerurl>

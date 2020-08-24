@@ -46,11 +46,11 @@ if(typeof orPopup_setCookie === 'undefined' )
             var d = new Date();
             d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
             var expires = "expires="+d.toUTCString();
-            document.cookie = cname + "=" + cvalue + ";" + expires + ";";
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
         }
         else
         {
-            document.cookie = cname + "=" + cvalue + ";";
+            document.cookie = cname + "=" + cvalue + ";path=/";
         }
     }
 }
@@ -108,9 +108,7 @@ if(typeof orPopup_lanzar === 'undefined' )
 		jQuery(target).addClass('or-fullCover');
     }
 }    
-        
   
-   
 if(typeof orPopupClose === 'undefined' ) { function orPopupClose(e) { be_closeCover(e); } }
 jQuery(document).ready(function()
 {
@@ -128,10 +126,10 @@ jQuery(document).ready(function()
 			var orPop_cookieTime = orPop.attr('rel-cookietime');
 			var metodo = orPop.attr('mod-attr');
 			var metodoValor = orPop.attr('mod-attrval');
-            var cuentaAtras = parseInt(metodoValor - orPopup_checkCookieTime('orpopup_timeController', orPop_cookieTime));
-            var orpopup_timeController = setInterval(function(){
-                orPopup_setCookie('orpopup_timeController', orPopup_checkCookieTime('orpopup_timeController', orPop_cookieTime) + 1000, orPop_cookieTime);
-            }, 1000);
+      var cuentaAtras = parseInt(metodoValor - orPopup_checkCookieTime('orpopup_timeController', orPop_cookieTime));
+      var orpopup_timeController = setInterval(function(){
+          orPopup_setCookie('orpopup_timeController', orPopup_checkCookieTime('orpopup_timeController', orPop_cookieTime) + 1000, orPop_cookieTime);
+      }, 1000);
 			if(metodo == "time" && cuentaAtras >= 0) // Time
 			{
 				setTimeout(function()
